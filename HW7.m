@@ -1,5 +1,5 @@
 %HW7
-
+clear all
 % Problem 1: Modeling population growth
 % The simplest model for a growing population assumes that each current
 % individual has equal likelihood to divide, which yields a differential
@@ -10,12 +10,47 @@
 % dX/dt = a*X*(1-X).  
 % Part 1. This equation has two fixed points at 0 and 1. Explain the
 % meaning of these two points.
+
+figure(1);
+a = 2;
+X = 0:0.01:1.5;
+gx = a.*X.*(1-X);
+plot(X,gx,'LineWidth',3); hold on;
+xlabel('#bact/MaxBact'); ylabel('g(x)'); set(gca,'FontSize',18); hold on;
+plot([0 1.5],[0 0],'k','LineWidth',3); hold on;
+legend('Bact Growth','0 line'); hold off;
+hold on;
+
+%Adam: The two fixed points represents the two equilibrium states of the
+%growth of the bacteria. The first point at 0 will have no growth because
+%there is no starting bacteria. The other point at 1 is the equilibrium
+%point where the growth will level off. 
+
 % Part 2: Evaluate the stability of these fixed points. Does it depend on
 % the value of the parameter a? 
+figure(2);
+X = 0:0.01:1.5;
+for a = 1:5
+gx = a.*X.*(1-X);
+plot(X,gx,'LineWidth',3); hold on;
+end
+xlabel('#bact/MaxBact'); ylabel('g(x)'); set(gca,'FontSize',18);
+plot([0 1.5],[0 0],'k','LineWidth',3); hold on;
+hold on;
+
+%Adam: as you can see in figure 2, the stability of these two points do not
+%vary with the value of a. This makes sense as a only represents the rate
+%at which will will approach the fixed points. 
+%%
 % Part 3: Write a function that takes two inputs - the initial condition x0
 % and the a parameter and integrates the equation forward in time. Make
 % your code return two variables - the timecourse of X and the time
 % required for the population to reach 99% of its maximum value. 
+
+%sol = ManualIntegrate(0,1)
+sol = ManualIntegrate(1,1)
+sol = ManualIntegrate(2,1)
+
 % Part 4: Another possible model is to consider discrete generations
 % instead allowing the population to vary continuously. e.g. X(t+1) = a*
 % X(t)*(1-X(t)). Consider this model and vary the a parameter in the range 0
@@ -25,6 +60,7 @@
 % have produced a bifucation diagram showing all possible final values of
 % Xf at each value of a. Explain your results. 
 
+%%
 % Problem 2. Genetic toggle switches. 
 % Consider a genetic system of two genes A and B in which each gene
 % product represses the expression of the other. Make the following
