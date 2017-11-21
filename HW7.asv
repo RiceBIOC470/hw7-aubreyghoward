@@ -117,14 +117,14 @@ legend('A expression', 'B expression');
 % fixed points of the system as a function of the V parameter. 
 % dA/dt = 0 = -B^5+(V-k)*B^4+0*B^3+0*B^2-B+V
 figure; hold on;
-k = 2; %"leaky" rate of transcription.
-for V = -5:0.1:5
+k = 1; 
+for V = 0:0.1:5
     polycoeff = [-1 (V-k) 0 0 -1 V]
     rts = roots(polycoeff);
     rts = rts(imag(rts) == 0);
     plot(V*ones(length(rts),1),rts,'r.');
 end
 hold off;
-xlabel('V'); ylabel('Zeros points');
+xlabel('V'); ylabel('X
 
 

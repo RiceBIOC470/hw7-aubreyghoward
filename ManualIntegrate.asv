@@ -1,11 +1,16 @@
-function sol = ManualIntegrate(x0,ain)
+function [sol,Nt] = ManualIntegrate(x0,ain)
 
-func = @(t,x,a,N) a.*x.*(1-x./N)
-N = 0.99
-Initialcond = [0,x0,ain,N]
-sol = ode23(func,[0 1],Initialcond);
+N99 = x0./0.99
+func1 = @(x,a,N) a.*x.*(1-x./N)
+func2 = @(t,func1) func1
+sol = ode23(func2,[0 10],[x0,ain,N99])
+
+if Nt = sol.x < N99
 figure;
-plot(sol,sol,'g.-')
+plot(sol.x,sol.y(2,:),'g.-'); hold on;
+xlabel('time'); hold on;
+ylabel('# of bacteria');hold off;
+end
 
 
 % Part 3: Write a function that takes two inputs - the initial condition x0
