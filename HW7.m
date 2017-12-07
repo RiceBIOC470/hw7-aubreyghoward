@@ -3,11 +3,11 @@
 1a 95 you are almost completely correct. Be more complete with what you mean by population leveling off at 1. 
 1b. 100
 1c. 100
-1d. 0
+1d. 0 no solution
 2a 50 wrong equations used. It should be [V/(1+x(2)^4)-x(1); V/(1+x(1)^4)-x(2)];
 2b. 100 correctly generated plots, but the equations used are wrong. I will give full credit
 2c  100 same as 2b. 
-overall: 86
+overall: 78
 
 
 clear all
